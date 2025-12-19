@@ -1,8 +1,8 @@
 name: Fetch Udemy Emails
 on:
   schedule:
-    - cron: '*/5 * * * *'  # كل 5 دقايق
-  workflow_dispatch:  # تشغيل يدوي
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
 jobs:
   fetch:
     runs-on: ubuntu-latest
@@ -14,13 +14,24 @@ jobs:
       with:
         python-version: '3.13'
     
+    - name: Cache state file
+      uses: actions/cache@v4
+      with:
+        path: ./last_email_id.json
+        key: ${{ runner.os }}-email-state-${{ hashFiles('**/FetchUdemyCode.py') }}
+    
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install imaplib2 requests beautifulsoup4
+        pip install imaplib2 requests beautifulsoup4 requests-html
         
     - name: Run script
       env:
         EMAIL: ${{ secrets.EMAIL }}
         APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
+        PHONE_NUMBER_ID: ${{ secrets.PHONE_NUMBER_ID }}
+        TOKEN: ${{ secrets.TOKEN }}
+        RECIPIENT: ${{ secrets.RECIPIENT }}
       run: python FetchUdemyCode.py
+
+      
