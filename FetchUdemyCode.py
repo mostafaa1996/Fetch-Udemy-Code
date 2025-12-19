@@ -14,7 +14,7 @@ TOKEN = "EAATX8L4hzwMBQGAMueh3EjJwFuRcOUa8py3SoHoPrNF8CNRdVSXeswk4RLPWIoblzsDI5b
 PHONE_NUMBER_ID = "887020591167852"
 RECIPIENT = "201062404126"
 
-STATE_FILE = "/home/mostafahamdy/last_email_id.json"
+STATE_FILE = "./last_email_id.json"
 
 def load_last_id():
     if os.path.exists(STATE_FILE) and os.path.getsize(STATE_FILE) > 0:
