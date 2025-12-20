@@ -27,8 +27,8 @@ jobs:
         
     - name: Run script
       env:
-        EMAIL: ${{ secrets.EMAIL }}
-        APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
+        GMAIL_USER: ${{ secrets.GMAIL_USER }}
+        GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
         PHONE_NUMBER_ID: ${{ secrets.PHONE_NUMBER_ID }}
         TOKEN: ${{ secrets.TOKEN }}
         RECIPIENT: ${{ secrets.RECIPIENT }}
