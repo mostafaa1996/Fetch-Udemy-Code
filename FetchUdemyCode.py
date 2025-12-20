@@ -78,7 +78,7 @@ if __name__ == "__main__":
     # print(latest , payload)
     if latest is None:
         print("No new email.")
-        exit()
+        exit(0)
     print("**********************************************************")
     string  = payload
     print(string)
